@@ -11,17 +11,19 @@ class TriviaTestCase(unittest.TestCase):
     def setUp(self):
         """Define test variables and initialize app."""
         self.database_name = "trivia_test"
-        self.database_user = "postgres"
-        self.database_password = "password"
+        self.database_user = "gurpreetatwal"
+        self.database_password = "abc"
         self.database_host = "localhost:5432"
         self.database_path = f"postgresql://{self.database_user}:{self.database_password}@{self.database_host}/{self.database_name}"
 
         # Create app with the test configuration
-        self.app = create_app({
-            "SQLALCHEMY_DATABASE_URI": self.database_path,
-            "SQLALCHEMY_TRACK_MODIFICATIONS": False,
-            "TESTING": True
-        })
+        self.app = create_app(
+            {
+                "SQLALCHEMY_DATABASE_URI": self.database_path,
+                "SQLALCHEMY_TRACK_MODIFICATIONS": False,
+                "TESTING": True,
+            }
+        )
         self.client = self.app.test_client()
 
         # Bind the app to the current context and create all tables
