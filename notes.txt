@@ -11,6 +11,11 @@ Create and populate the db
 createdb trivia
 psql trivia < trivia.psql (from the backend folder)
 
+Note: for test file, db name is "trivia_test"
+
+createdb trivia_test
+psql trivia_test < trivia.psql (from the backend folder)
+
 #######################################################
 
 Run the commands fron backend folder:
