@@ -18,7 +18,11 @@ psql trivia_test < trivia.psql (from the backend folder)
 
 #######################################################
 
-Run the commands fron backend folder:
+Steps to run the application:
+
+1. Start the DB server and ensure the DB exists - else create the same
+2. Activate venv
+3. Run the commands fron backend folder:
 
 export FLASK_APP=flaskr
 export FLASK_ENV=development 
