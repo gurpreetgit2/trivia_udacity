@@ -1,10 +1,15 @@
 from sqlalchemy import Column, String, Integer
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+import os
 
-database_name = "trivia"
-database_user = "gurpreetatwal"
-database_password = "abc"
-database_host = "localhost:5432"
+# Load environment variables from .env file
+load_dotenv()
+
+database_name = os.getenv("DB_NAME")
+database_user = os.getenv("DB_USER")
+database_password = os.getenv("DB_PASS")
+database_host = os.getenv("DB_HOST")
 database_path = (
     f"postgresql://{database_user}:{database_password}@{database_host}/{database_name}"
 )

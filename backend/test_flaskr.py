@@ -5,17 +5,21 @@ import json
 from flaskr import create_app
 from models import db, Question, Category
 import subprocess
+from dotenv import load_dotenv
 
 
 class TriviaTestCase(unittest.TestCase):
     """This class represents the trivia test case"""
 
+    # Load environment variables from .env file
+    load_dotenv()
+
     def setUp(self):
         """Define test variables and initialize app."""
-        self.database_name = "trivia_test"
-        self.database_user = "gurpreetatwal"
-        self.database_password = "abc"
-        self.database_host = "localhost:5432"
+        self.database_name = os.getenv("DB_NAME_TEST")
+        self.database_user = os.getenv("DB_USER_TEST")
+        self.database_password = os.getenv("DB_PASS_TEST")
+        self.database_host = os.getenv("DB_HOST_TEST")
         self.database_path = f"postgresql://{self.database_user}:{self.database_password}@{self.database_host}/{self.database_name}"
 
         # Path to the trivia.psql file
@@ -156,7 +160,7 @@ class TriviaTestCase(unittest.TestCase):
         response = self.client.post("/questions", json=new_question)
         data = json.loads(response.data)
         print(f"The response JSON is: {data}")
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
         self.assertTrue(data["success"])
 
     def test_add_question_failure(self):
